@@ -28,9 +28,9 @@ Este sistema utiliza uma arquitetura mestre-escravo, onde um **cliente** envia u
 
 4. **Consolidação dos Resultados**
    - O mestre recebe os resultados dos escravos e monta uma resposta final no formato:
-     ```
+     
      Letras: X | Números: Y
-     ```
+     
      Substituindo `X` e `Y` pelas contagens reais.
    - A resposta é enviada de volta ao cliente com **status `200 OK`**.
 
@@ -39,7 +39,7 @@ Este sistema utiliza uma arquitetura mestre-escravo, onde um **cliente** envia u
 
    **▶️EXECUÇÃO DO PROJETO**
 
-   Para executar o sistema foi executado no servidor os comandos `docker compose up --buil` e `docker compose up`.
+   Para executar o sistema foi executando no servidor os comandos `docker compose up --buil` e `docker compose up`.
     - O docker compose up --build Gera as imagens docker com base nos arquivos Dockerfile de cada componente.
     - O docker compose up sobe os containers automaticamente após a build e após a construção inicial foi utilizado somente ele.
 
@@ -48,20 +48,20 @@ Este sistema utiliza uma arquitetura mestre-escravo, onde um **cliente** envia u
 ## 📁 ESTRUTURA DO PROJETO
 
 ```bash
-/projeto-distribuido/                   
-├── cliente-gui/                        
-│   └── Cliente.java                  
-├── mestre/                             
+/projeto-distribuido/
+├── cliente-gui/ 
+│   └── Cliente.java
+├── mestre/                            
 │   └── Mestre.java                     
-├── escravo-letras/                   
+├── escravo-letras/                     
 │   └── EscravoLetras.java             
-├── escravo-numeros/                   
-│   └── EscravoNumeros.java            
-├── docker-compose.yml                  
-├── README.md                        
+├── escravo-numeros/                    
+│   └── EscravoNumeros.java             
+├── docker-compose.yml                 
+├── README.md                           
 └── LICENSE                             
 
-
+```
 ## 📷 IMAGENS DAS EXECUÇÕES
 
 ![servidor inicializando](imagens/servidor_inicializando.png)

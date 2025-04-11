@@ -7,11 +7,11 @@ Este sistema utiliza uma arquitetura mestre-escravo, onde um **cliente** envia u
 ## Fluxo de Execução
 
 1. **Envio do Texto pelo Cliente**
-   - O cliente envia uma requisição HTTP POST para o mestre, no endpoint `/processar`.
+   - O cliente envia uma requisição HTTP POST para o mestre, no endpoint /processar.
    - O corpo da requisição contém o texto a ser analisado.
 
 2. **Verificação de Disponibilidade dos Escravos**
-   - O mestre envia requisições HTTP GET para o endpoint `/ping` dos dois escravos:
+   - O mestre envia requisições HTTP GET para o endpoint /ping dos dois escravos:
      - Escravo de letras: `http://escravo-letras:8001/ping`
      - Escravo de números: `http://escravo-numeros:8002/ping`
    - Se ambos retornarem status `200 OK`, o mestre prossegue com o processamento, caso algum esteja indisponível, o mestre retorna ao cliente uma resposta com:
@@ -20,8 +20,8 @@ Este sistema utiliza uma arquitetura mestre-escravo, onde um **cliente** envia u
 
 3. **Processamento Paralelo**
    - O mestre utiliza `ExecutorService` e `Future` para enviar o texto aos endpoints:
-     - `/letras` para o escravo de letras.
-     - `/numeros` para o escravo de números.
+     - /letras para o escravo de letras.
+     - /numeros para o escravo de números.
    - Cada escravo processa o texto separadamente:
      - **Escravo de Letras:** Conta todos os caracteres alfabéticos usando `Character::isLetter`.
      - **Escravo de Números:** Conta os dígitos de 0 a 9 usando `Character::isDigit`.
@@ -39,28 +39,27 @@ Este sistema utiliza uma arquitetura mestre-escravo, onde um **cliente** envia u
 
    **▶️EXECUÇÃO DO PROJETO**
 
-   Para executar o sistema foi execuatdo no servidor os comandos `docker compose up --buil` e `docker compose up`.
+   Para executar o sistema foi executado no servidor os comandos `docker compose up --buil` e `docker compose up`.
     - O docker compose up --build Gera as imagens docker com base nos arquivos Dockerfile de cada componente.
     - O docker compose up sobe os containers automaticamente após a build e após a construção inicial foi utilizado somente ele.
 
 
 
+## 📁 ESTRUTURA DO PROJETO
 
-
-   ## 📁 ESTRUTURA DO PROJETO
-
-/projeto-distribuido/                   # Diretório principal do sistema
-├── cliente-gui/                        # Interface gráfica que envia texto ao mestre
-│   └── Cliente.java                    # Script da interface do cliente (Swing)
-├── mestre/                             # Servidor mestre que coordena os escravos
-│   └── Mestre.java                     # Lida com threads, recebe do cliente e envia aos escravos
-├── escravo-letras/                     # Contador de letras
-│   └── EscravoLetras.java              # Script para contar letras
-├── escravo-numeros/                    # Contador de números
-│   └── EscravoNumeros.java             # Script para contar números
-├── docker-compose.yml                  # Arquivo que orquestra os containers Docker
-├── README.md                           # Documentação do projeto
-└── LICENSE                             # Licença do projeto (MIT)
+```bash
+/projeto-distribuido/                   
+├── cliente-gui/                        
+│   └── Cliente.java                  
+├── mestre/                             
+│   └── Mestre.java                     
+├── escravo-letras/                   
+│   └── EscravoLetras.java             
+├── escravo-numeros/                   
+│   └── EscravoNumeros.java            
+├── docker-compose.yml                  
+├── README.md                        
+└── LICENSE                             
 
 
 ## 📷 IMAGENS DAS EXECUÇÕES

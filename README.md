@@ -40,9 +40,9 @@ Este sistema utiliza uma arquitetura mestre-escravo, onde um **cliente** envia u
 
    Para executar o sistema foi executando no servidor os comandos `docker compose up --buil` e `docker compose up`.
     - O docker compose up --build Gera as imagens docker com base nos arquivos Dockerfile de cada componente.
-    - O docker compose up sobe os containers automaticamente após a build e após a construção inicial foi utilizado somente ele.
+    - O docker compose up sobe os containers automaticamente após a build e após a construção inicial foi utilizado somente ele. 
 
-
+    -Além disso, para a utilização da linguagem java é preciso realizar a instalação do java JDK na máquina.
 
 ## 📁 ESTRUTURA DO PROJETO
 

@@ -11,7 +11,7 @@ Este sistema utiliza uma arquitetura mestre-escravo, onde um **cliente** envia u
    - O corpo da requisição contém o texto a ser analisado.
 
 2. **Verificação de Disponibilidade dos Escravos**
-   - O mestre envia requisições HTTP GET para o endpoint /ping dos dois escravos:
+   - O mestre envia requisições HTTP GET para o endpoint ping dos dois escravos:
      - Escravo de letras: `http://escravo-letras:8001/ping`
      - Escravo de números: `http://escravo-numeros:8002/ping`
    - Se ambos retornarem status `200 OK`, o mestre prossegue com o processamento, caso algum esteja indisponível, o mestre retorna ao cliente uma resposta com:
@@ -31,8 +31,7 @@ Este sistema utiliza uma arquitetura mestre-escravo, onde um **cliente** envia u
      
      Letras: X | Números: Y
      
-     Substituindo `X` e `Y` pelas contagens reais.
-   - A resposta é enviada de volta ao cliente com **status `200 OK`**.
+     Substituindo `X` e `Y` pelas contagens reais. Assim a resposta é enviada de volta ao cliente com **status `200 OK`**.
 
 5. **Registro e Monitoramento**
    - Todo o processo (incluindo falhas e sucessos) é registrado no terminal do servidor mestre.
